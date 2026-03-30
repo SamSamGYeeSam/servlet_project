@@ -12,5 +12,13 @@
 </head>
 <body>
 
+    // ================= 직원 삭제 form ===================
+    <form action="${pageContext.request.contextPath}/employees/delete" method="post"
+        onsubmit="return confirm('정말 삭제하시겠습니까?');">
+        <input type="hidden" name="empId" value="${employee.empId}">
+        <button type="submit">삭제</button>
+    </form>
+    // ====================================================
+
 </body>
 </html>
