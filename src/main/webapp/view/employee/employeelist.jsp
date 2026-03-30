@@ -35,14 +35,14 @@
             for (EmployeeListDTO employee : employeeList) {
     %>
     <tr>
-        <td><%= employee.getEmpId() %></td>
-        <td><%= employee.getEmpName() %></td>
+        <td><%= employee.getEmp_id() %></td>
+        <td><%= employee.getEmp_name() %></td>
         <td><%= employee.getEmail() %></td>
         <td><%= employee.getPhone() %></td>
-        <td><%= employee.getDeptCode() %></td>
-        <td><%= employee.getJobCode() %></td>
+        <td><%= employee.getDept_code() %></td>
+        <td><%= employee.getJob_code() %></td>
         <td><%= employee.getSalary() %></td>
-        <td><%= employee.getEntYn() %></td>
+        <td><%= employee.getEnt_yn() %></td>
     </tr>
     <%
         }
