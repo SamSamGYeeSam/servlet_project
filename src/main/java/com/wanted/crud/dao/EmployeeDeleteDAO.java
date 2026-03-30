@@ -13,7 +13,7 @@ public class EmployeeDeleteDAO {
         PreparedStatement pstmt = null;
         int result = 0;
 
-        String sql = "DELETE FROM employee WHERE EMP_ID = ?";
+        String sql = "DELETE FROM employee WHERE emp_id = ?";
 
         try {
             pstmt = con.prepareStatement(sql);
