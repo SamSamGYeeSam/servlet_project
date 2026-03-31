@@ -42,6 +42,8 @@ public class EmployeeListDAO {
                         rest.getString("salary"),
                         rest.getString("workingstatus")
                 );
+                // DTO 추가
+                empList.add(dto);
                 employeeList.add(dto);
             }
         }
