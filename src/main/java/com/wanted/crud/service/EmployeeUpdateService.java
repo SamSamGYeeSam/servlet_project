@@ -17,4 +17,18 @@ public class EmployeeUpdateService  {
         return update;
     }
 
+    public int updateEmployee(EmployeeUpdateDTO updateData) {
+        Connection con = JDBCTemplate.getConnection();
+        int result = 0;
+
+        try {
+            result = updateDAO.updateEmployee(con, updateData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCTemplate.close(con);
+        }
+        return result;
+    }
+
 }

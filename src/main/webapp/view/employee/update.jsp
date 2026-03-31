@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-<h2>사원 정보 수정 - ${update.emp_Name} 님</h2>
+<h2>사원 정보 수정 - "${update.emp_Name} 님</h2>
 
 <form action="${pageContext.request.contextPath}/employees/update" method="post">
 

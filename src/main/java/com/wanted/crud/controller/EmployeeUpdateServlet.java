@@ -44,14 +44,25 @@ public class EmployeeUpdateServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         String empId = req.getParameter("empId");
-        String name = req.getParameter("name");
-        String status = req.getParameter("status");
-        String bio = req.getParameter("bio");
-        String avatarUrl = req.getParameter("avatarUrl");
-        String learningGoal = req.getParameter("learningGoal");
+        String empName = req.getParameter("empName");
+        String email = req.getParameter("email");
+        String phone = req.getParameter("phone");
+        String entYn = req.getParameter("entYn");
 
-        EmployeeUpdateDTO updateData = new EmployeeUpdateDTO(empId,name, null, null, null, null, null, null, 0, 0, 0, null, null, null);
+        int salary = 0;
+        if (req.getParameter("salary") != null && !req.getParameter("salary").isEmpty()) {
+            salary = Integer.parseInt(req.getParameter("salary"));
+        }
 
-        resp.sendRedirect(req.getContextPath() + "/employees");
+        EmployeeUpdateDTO updateData = new EmployeeUpdateDTO(empId, empName, null, email, phone, null, null, null, salary, 0, 0, null, null, entYn);
+
+        int result = updateService.updateEmployee(updateData);
+        if (result > 0) {
+            System.out.println(">>> DB 수정 성공: " + empName);
+            resp.sendRedirect(req.getContextPath() + "/employees/edit?empId=" + empId);
+        } else {
+            System.out.println(">>> DB 수정 실패");
+            resp.sendRedirect(req.getContextPath() + "/employees/edit?empId=" + empId);
+        }
     }
 }
