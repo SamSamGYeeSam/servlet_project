@@ -14,7 +14,7 @@ public class EmployeeRegistDTO {
     private Date hire_Date;
     private String ent_yn;
 
-
+//d
     public EmployeeRegistDTO(int empId, String empName, String email, String phone, String deptTitle, String jobName, double salary, String entYn) {}
 
     public EmployeeRegistDTO(int emp_id, String emp_name, String emp_no, String email, String phone, String dept_code, String job_code, int salary, Date hire_Date, String ent_yn) {

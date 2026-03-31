@@ -25,6 +25,6 @@ public class EmployeeRegistService {
         JDBCTemplate.close(con);
 
         // 서블릿으로 넘기기
-        return empList;
+        return empList; //d
     }
 }
