@@ -13,14 +13,17 @@ import java.util.List;
 
 public class EmployeeListDAO {
 
-
+    // 직원 목록을 받아 리스트로 반환하는 메서드
     public List<EmployeeListDTO> selectAllEmployee() {
 
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rset = null;
+        Connection con = null; // DB 연결
+        PreparedStatement pstmt = null; // SQL 실행
+        ResultSet rset = null; // 조회 결과 저장
 
+        // 여러 사원을 담을 리스트
         List<EmployeeListDTO> empList = new ArrayList<>();
+
+
         String query = "SELECT E.EMP_ID, E.EMP_NAME, E.EMAIL," +
                 " E.PHONE, D.DEPT_TITLE, J.JOB_NAME, E.SALARY," +
                 " E.ENT_YN FROM EMPLOYEE E " +
@@ -28,11 +31,15 @@ public class EmployeeListDAO {
                 "JOIN JOB J ON E.JOB_CODE = J.JOB_CODE";
 
         try {
+            //DB 연결 생성
             con = JDBCTemplate.getConnection();
+            // SQL 실행 준비
             pstmt = con.prepareStatement(query);
+            // 쿼리 싱행 후 결과 저장
             rset = pstmt.executeQuery();
 
             while (rset.next()) {
+                // DTO 객체 생성
                 EmployeeListDTO dto = new EmployeeListDTO(
                         rset.getInt("EMP_ID"),
                         rset.getString("EMP_NAME"),
@@ -46,8 +53,10 @@ public class EmployeeListDAO {
                 empList.add(dto);
             }
 
+            //예외 발생 시 런타임으로 예외 설정
         } catch (SQLException e) {
             throw new RuntimeException(e);
+            // 다 닫기
         } finally {
             JDBCTemplate.close(rset);
             JDBCTemplate.close(pstmt);
