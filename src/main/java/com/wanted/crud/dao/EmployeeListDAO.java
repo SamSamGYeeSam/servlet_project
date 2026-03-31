@@ -50,6 +50,7 @@ public class EmployeeListDAO {
                         rset.getDouble("SALARY"),
                         rset.getString("ENT_YN")
                 );
+                // DTO 추가
                 empList.add(dto);
             }
 
