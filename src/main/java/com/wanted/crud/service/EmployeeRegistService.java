@@ -1,25 +1,25 @@
 package com.wanted.crud.service;
 
-import com.wanted.crud.dao.EmployeeListDAO;
-import com.wanted.crud.dto.EmployeeListDTO;
+import com.wanted.crud.dao.EmployeeRegistDAO;
+import com.wanted.crud.dto.EmployeeRegistDTO;
 import com.wanted.crud.global.JDBCTemplate;
 
 import java.sql.Connection;
 import java.util.List;
 
-public class EmployeeListService {
+public class EmployeeRegistService {
 
     // 서비스에서 DAO 호출
-    private final EmployeeListDAO employeeListDAO = new EmployeeListDAO();
+    private final EmployeeRegistDAO employeeRegistDAO = new EmployeeRegistDAO();
 
     // 직원 목록 반환
-    public List<EmployeeListDTO> selectAllEmployees() {
+    public List<EmployeeRegistDTO> selectAllEmployees() {
 
         // DB연결
         Connection con = JDBCTemplate.getConnection();
 
         // SQL 실행
-        List<EmployeeListDTO> empList = employeeListDAO.selectAllEmployee();
+        List<EmployeeRegistDTO> empList = employeeRegistDAO.selectAllEmployee();
 
         //닫기
         JDBCTemplate.close(con);

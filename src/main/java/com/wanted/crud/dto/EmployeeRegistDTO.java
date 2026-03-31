@@ -2,7 +2,7 @@ package com.wanted.crud.dto;
 
 import java.sql.Date;
 
-public class EmployeeListDTO {
+public class EmployeeRegistDTO {
     private int emp_id;
     private String emp_name;
     private String emp_no;
@@ -15,9 +15,9 @@ public class EmployeeListDTO {
     private String ent_yn;
 
 
-    public EmployeeListDTO(int empId, String empName, String email, String phone, String deptTitle, String jobName, double salary, String entYn) {}
+    public EmployeeRegistDTO(int empId, String empName, String email, String phone, String deptTitle, String jobName, double salary, String entYn) {}
 
-    public EmployeeListDTO(int emp_id, String emp_name, String emp_no, String email, String phone, String dept_code, String job_code, int salary, Date hire_Date, String ent_yn) {
+    public EmployeeRegistDTO(int emp_id, String emp_name, String emp_no, String email, String phone, String dept_code, String job_code, int salary, Date hire_Date, String ent_yn) {
         this.emp_id = emp_id;
         this.emp_name = emp_name;
         this.emp_no = emp_no;

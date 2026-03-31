@@ -1,6 +1,6 @@
 package com.wanted.crud.dao;
 
-import com.wanted.crud.dto.EmployeeListDTO;
+import com.wanted.crud.dto.EmployeeRegistDTO;
 import com.wanted.crud.global.JDBCTemplate;
 
 import java.sql.Connection;
@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EmployeeListDAO {
+public class EmployeeRegistDAO {
 
     // 직원 목록을 받아 리스트로 반환하는 메서드
-    public List<EmployeeListDTO> selectAllEmployee() {
+    public List<EmployeeRegistDTO> selectAllEmployee() {
 
         Connection con = null; // DB 연결
         PreparedStatement pstmt = null; // SQL 실행
         ResultSet rset = null; // 조회 결과 저장
 
         // 여러 사원을 담을 리스트
-        List<EmployeeListDTO> empList = new ArrayList<>();
+        List<EmployeeRegistDTO> empList = new ArrayList<>();
 
 
         String query = "SELECT E.EMP_ID, E.EMP_NAME, E.EMAIL," +
@@ -40,7 +40,7 @@ public class EmployeeListDAO {
 
             while (rset.next()) {
                 // DTO 객체 생성
-                EmployeeListDTO dto = new EmployeeListDTO(
+                EmployeeRegistDTO dto = new EmployeeRegistDTO(
                         rset.getInt("EMP_ID"),
                         rset.getString("EMP_NAME"),
                         rset.getString("EMAIL"),

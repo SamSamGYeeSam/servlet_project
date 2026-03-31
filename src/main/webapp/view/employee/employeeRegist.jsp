@@ -1,4 +1,4 @@
-<%@ page import="com.wanted.crud.dto.EmployeeListDTO" %>
+<%@ page import="com.wanted.crud.dto.EmployeeRegistDTO" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: user
@@ -8,8 +8,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    List<EmployeeListDTO> employeeList =
-            (List<EmployeeListDTO>) request.getAttribute("employeeList");
+    List<EmployeeRegistDTO> employeeList =
+            (List<EmployeeRegistDTO>) request.getAttribute("employeeList");
 %>
 <html>
 <head>
@@ -32,7 +32,7 @@
 
     <%
         if (employeeList != null && !employeeList.isEmpty()) {
-            for (EmployeeListDTO employee : employeeList) {
+            for (EmployeeRegistDTO employee : employeeList) {
     %>
     <tr>
         <td><%= employee.getEmp_id() %></td>
