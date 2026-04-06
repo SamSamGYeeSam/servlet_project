@@ -41,7 +41,7 @@
   <h2>메뉴 선택</h2>
   <div class="btn-wrap">
     <button class="btn-detail" onclick="location.href='/employees/detail?emp_id=<%= empId %>'">상세조회</button>
-    <button class="btn-edit" onclick="location.href='/employees/update?emp_id=<%= empId %>'">수정</button>
+    <button class="btn-edit" onclick="location.href='/employees/edit?emp_id=<%= empId %>'">수정</button>
     <button class="btn-delete" onclick="location.href='/employees/delete?emp_id=<%= empId %>'">삭제</button>
     <button class="btn-back" onclick="location.href='/employees'">이전</button>
   </div>
