@@ -10,15 +10,13 @@ public class EmployeeRegistDTO {
     private String phone;
     private String dept_code;
     private String job_code;
-    private String sal_level;  // ← 추가
+    private String sal_level;  
     private int salary;
     private Date hire_Date;
     private String ent_yn;
 
-    // 기존 생성자 (DAO selectAllEmployee용)
     public EmployeeRegistDTO(int empId, String empName, String email, String phone, String deptTitle, String jobName, double salary, String entYn) {}
 
-    // 기존 생성자
     public EmployeeRegistDTO(int emp_id, String emp_name, String emp_no, String email, String phone, String dept_code, String job_code, int salary, Date hire_Date, String ent_yn) {
         this.emp_id = emp_id;
         this.emp_name = emp_name;
@@ -61,8 +59,8 @@ public class EmployeeRegistDTO {
     public void setDept_code(String dept_code) { this.dept_code = dept_code; }
     public String getJob_code() { return job_code; }
     public void setJob_code(String job_code) { this.job_code = job_code; }
-    public String getSal_level() { return sal_level; }          // ← 추가
-    public void setSal_level(String sal_level) { this.sal_level = sal_level; }  // ← 추가
+    public String getSal_level() { return sal_level; }        
+    public void setSal_level(String sal_level) { this.sal_level = sal_level; } 
     public int getSalary() { return salary; }
     public void setSalary(int salary) { this.salary = salary; }
     public Date getHire_Date() { return hire_Date; }
