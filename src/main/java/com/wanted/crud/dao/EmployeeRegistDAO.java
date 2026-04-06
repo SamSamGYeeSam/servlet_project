@@ -137,7 +137,7 @@ public class EmployeeRegistDAO {
             pstmt.setString(5, dto.getPhone());
             pstmt.setString(6, dto.getDept_code());
             pstmt.setString(7, dto.getJob_code());
-            pstmt.setString(8, dto.getSal_level());  // ← 추가
+            pstmt.setString(8, dto.getSal_level()); 
             pstmt.setInt(9, dto.getSalary());
             pstmt.setDate(10, dto.getHire_Date());
             pstmt.setString(11, dto.getEnt_yn());
