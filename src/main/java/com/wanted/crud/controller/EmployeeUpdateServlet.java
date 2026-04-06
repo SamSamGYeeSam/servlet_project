@@ -59,10 +59,10 @@ public class EmployeeUpdateServlet extends HttpServlet {
         int result = updateService.updateEmployee(updateData);
         if (result > 0) {
             System.out.println(">>> DB 수정 성공: " + empName);
-            resp.sendRedirect(req.getContextPath() + "/employees/edit?empId=" + empId);
+            resp.sendRedirect(req.getContextPath() + "/employees");
         } else {
             System.out.println(">>> DB 수정 실패");
-            resp.sendRedirect(req.getContextPath() + "/employees/edit?empId=" + empId);
+            resp.sendRedirect(req.getContextPath() + "/employees/edit?empId=" + empId + "&error=true");
         }
     }
 }

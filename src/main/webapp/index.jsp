@@ -211,11 +211,64 @@
     </style>
 
     <script>
+
+        function goToDetail() {
+            if (!<%= isLogin %>) {
+                alert("로그인 후 이용 가능한 기능입니다.");
+                return;
+            }
+            var empId = prompt('조회할 사번을 입력하세요.\n사번을 모르면 취소를 누르고 전체 목록을 확인하세요.');
+            if (empId) {
+                location.href = '/employees/detail?emp_id=' + empId;
+            } else if (empId === null) {
+                if (confirm('전체 목록으로 이동하시겠습니까?')) {
+                    location.href = '/employees';
+                }
+            }
+        }
+
+        function goToEdit() {
+            if (!<%= isLogin %>) {
+                alert("로그인 후 이용 가능한 기능입니다.");
+                return;
+            }
+            var empId = prompt('수정할 사번을 입력하세요.\n사번을 모르면 취소를 누르고 전체 목록을 확인하세요.');
+            if (empId) {
+                location.href = '/employees/edit?empId=' + empId;
+            } else if (empId === null) {
+                if (confirm('전체 목록으로 이동하시겠습니까?')) {
+                    location.href = '/employees';
+                }
+            }
+        }
+
+        function goToDelete() {
+            if (!<%= isLogin %>) {
+                alert("로그인 후 이용 가능한 기능입니다.");
+                return;
+            }
+            var empId = prompt('삭제할 사번을 입력하세요.\n사번을 모르면 취소를 누르고 전체 목록을 확인하세요.');
+            if (empId) {
+                if (confirm('정말 삭제하시겠습니까?')) {
+                    fetch('/employees/delete', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                        body: 'empId=' + empId
+                    }).then(function(response) {
+                        if (response.ok) location.href = '/employees';
+                    });
+                }
+            } else if (empId === null) {
+                if (confirm('전체 목록으로 이동하시겠습니까?')) {
+                    location.href = '/employees';
+                }
+            }
+        }
         function movePage(url, needLogin) {
             const isLogin = <%= isLogin %>;
 
-            // if (needLogin && !isLogin) {
-            if (false) {
+            if (needLogin && !isLogin) {
+            // if (false) {
                 alert("로그인 후 이용 가능한 기능입니다.");
                 return;
             }
@@ -328,7 +381,7 @@
                 <p><strong>추가 요구사항:</strong> 각 행에서 상세 조회, 수정, 삭제 기능으로 이동할 수 있어야 한다.</p>
             </div>
 
-            <div class="card" onclick="movePage('<%= contextPath %>/employees/detail?empId=200', true)">
+            <div class="card" onclick="goToDetail()">
                 <h3>사원 상세 조회</h3>
                 <p><strong>URL:</strong> GET /employees/detail?empId={empId}</p>
                 <p><strong>목적:</strong> 특정 사원 1명의 상세 정보를 조회한다.</p>
@@ -348,7 +401,7 @@
                 <p><strong>성공 흐름:</strong> 등록 성공 후 redirect:/employees</p>
             </div>
 
-            <div class="card" onclick="movePage('<%= contextPath %>/employees/edit?empId=200', true)">
+            <div class="card" onclick="goToEdit()">
                 <h3>사원 수정</h3>
                 <p><strong>URL:</strong> GET /employees/edit?empId={empId}, POST /employees/update</p>
                 <p><strong>목적:</strong> 기존 사원 정보를 수정한다.</p>
@@ -358,7 +411,7 @@
                 <p><strong>성공 흐름:</strong> 수정 성공 후 redirect:/employees/detail?empId={empId}</p>
             </div>
 
-            <div class="card" onclick="needPostMessage('사원 삭제')">
+            <div class="card" onclick="goToDelete()">
                 <h3>사원 삭제</h3>
                 <p><strong>URL:</strong> POST /employees/delete</p>
                 <p><strong>목적:</strong> 특정 사원 정보를 삭제한다.</p>

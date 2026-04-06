@@ -19,72 +19,22 @@
         th { background-color: #1d4ed8; color: white; }
         tr:nth-child(even) { background-color: #f2f2f2; }
         tr:hover { background-color: #ddd; }
+        button {
+            margin-top: 20px;
+            padding: 11px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #e5e7eb;
+            color: #374151;
+        }
+        button:hover { background: #d1d5db; }
     </style>
 </head>
 <body>
 
-<!-- ================= 사원 삭제 form ===================-->
-<!-- 삭제 버튼 -->
-<button type="button" onclick="openDeleteModal()">삭제</button>
-
-<!-- 배경 어둡게 -->
-<div id="modalOverlay" style="
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.5);
-    z-index:1000;
-"></div>
-
-<!-- 삭제 확인 팝업 -->
-<div id="deleteModal" style="
-    display:none;
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    text-align:center;
-    z-index:1001;
-    width:300px;
-">
-
-    <p style="font-weight:bold; font-size:16px;">
-        정말 삭제하시겠습니까?
-    </p>
-    <p style="color:red; margin-bottom:20px;">
-        되돌릴 수 없습니다.
-    </p>
-
-    <!-- 삭제 -->
-    <form action="${pageContext.request.contextPath}/employees/delete" method="post" style="display:inline;">
-        <input type="hidden" name="empId" value="${employee.empId}">
-        <button type="submit" style="
-            background:#dc3545;
-            color:white;
-            padding:8px 15px;
-            border:none;
-            margin-right:10px;
-        ">
-            삭제
-        </button>
-    </form>
-
-    <!-- 취소 -->
-    <button onclick="closeDeleteModal()" style="
-        background:#6c757d;
-        color:white;
-        padding:8px 15px;
-        border:none;
-    ">
-        취소
-    </button>
-</div>
 
 <!-- 스크립트 -->
 <script>
@@ -101,6 +51,7 @@
 <!-- ==================================================== -->
 
 <h2>직원 목록</h2>
+<button onclick="location.href='<%= request.getContextPath() %>/'">이전</button>
 <table>
     <tr>
         <th>ID</th>
