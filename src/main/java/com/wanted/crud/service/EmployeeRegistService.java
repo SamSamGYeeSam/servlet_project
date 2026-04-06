@@ -43,7 +43,6 @@ public class EmployeeRegistService {
         return employeeRegistDAO.selectAllEmployee();
     }
 
-    // INSERT 서비스 추가
     public int insertEmployee(EmployeeRegistDTO dto) {
         return employeeRegistDAO.insertEmployee(dto);
     }
